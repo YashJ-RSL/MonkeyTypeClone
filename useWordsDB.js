@@ -12,7 +12,6 @@ const useRandomWords = (n) => {
     const data = await response.json();
     const arr = data.words.sort(() => 0.5 - Math.random());
     const randomTexts = arr.slice(0, 150);
-    console.log(randomTexts);
     setWords(randomTexts);
   }
 
