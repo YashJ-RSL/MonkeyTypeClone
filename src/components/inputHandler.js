@@ -4,7 +4,6 @@ const InputHandler = ({ inputText, setInputTextHelper, inputRef }) => {
       <input
         autoFocus
         type="text"
-        value={inputText}
         onKeyDown={setInputTextHelper}
         ref={inputRef}
         className="input-text"

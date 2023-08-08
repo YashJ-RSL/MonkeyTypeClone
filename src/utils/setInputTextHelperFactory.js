@@ -6,7 +6,9 @@ const setInputTextHelperFactory = (
   setCounter,
   setIsTimerRunning,
   isTimerRunning,
-  sentences
+  sentences,
+  lineCounter,
+  setLineCounter
 ) => {
   if (event.key.length === 1 || event.key === "Backspace") {
     if (event.key === "Backspace") {
@@ -48,6 +50,25 @@ const setInputTextHelperFactory = (
         setCounter(counterTemp + 1);
         document.getElementById(`span-char-${counterTemp}`).style.borderRight =
           "1px solid white";
+        let currentCharPos = document.getElementById(
+          `span-char-${counterTemp}`
+        ).offsetTop;
+        let nextCharPos = document.getElementById(
+          `span-char-${counterTemp + 1}`
+        ).offsetTop;
+        if (currentCharPos != nextCharPos) {
+          setLineCounter(lineCounter + 1);
+          if (lineCounter + 1 > 3) {
+            console.log("here");
+            const topPos = document.getElementById(
+              `span-char-${counterTemp + 1}`
+            ).offsetTop;
+            console.log(topPos);
+            console.log(lineCounter);
+            document.getElementsByClassName("words")[0].scrollTop =
+              45 * (lineCounter - 2);
+          }
+        }
       } else {
         let temp = inputText + event.key;
         setInputText(temp);
@@ -64,6 +85,27 @@ const setInputTextHelperFactory = (
         }
         document.getElementById(`span-char-${counter}`).style.borderRight =
           "1px solid white";
+        if (event.key === " ") {
+          let currentCharPos = document.getElementById(
+            `span-char-${counter}`
+          ).offsetTop;
+          let nextCharPos = document.getElementById(
+            `span-char-${counter + 1}`
+          ).offsetTop;
+          if (currentCharPos != nextCharPos) {
+            setLineCounter(lineCounter + 1);
+            if (lineCounter + 1 > 3) {
+              console.log("here");
+              const topPos = document.getElementById(
+                `span-char-${counter + 1}`
+              ).offsetTop;
+              console.log(topPos);
+              console.log(lineCounter);
+              document.getElementsByClassName("words")[0].scrollTop =
+                45 * (lineCounter - 2);
+            }
+          }
+        }
       }
       document.getElementById("timer").style.opacity = "1";
       document.getElementById("nav").style.display = "none";

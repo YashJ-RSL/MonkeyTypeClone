@@ -17,6 +17,7 @@ const Body = () => {
   const [redirectToResults, setRedirectToResults] = useState(false);
   const [counter, setCounter] = useState(0);
   const [tracker, setTracker] = useState([]);
+  const [lineCounter, setLineCounter] = useState(0);
   const inputRef = useRef(null);
   const setInputTextHelper = (event) => {
     return setInputTextHelperFactory(
@@ -27,7 +28,9 @@ const Body = () => {
       setCounter,
       setIsTimerRunning,
       isTimerRunning,
-      sentences
+      sentences,
+      lineCounter,
+      setLineCounter
     );
   };
   useEffect(() => {
