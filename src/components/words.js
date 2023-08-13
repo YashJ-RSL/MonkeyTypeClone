@@ -1,4 +1,4 @@
-const Words = ({ inputRef, arrayOfChars }) => {
+const Words = ({ inputRef, arrayOfChars, charRef }) => {
   return (
     <div
       className="words"
@@ -11,6 +11,7 @@ const Words = ({ inputRef, arrayOfChars }) => {
           key={index}
           id={`span-char-${index}`}
           className={"letter " + (item == " " ? "space" : "")}
+          ref={(element) => (charRef.current[index] = element)}
         >
           {item}
         </span>

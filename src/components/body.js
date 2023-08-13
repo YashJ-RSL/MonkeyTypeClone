@@ -19,6 +19,7 @@ const Body = () => {
   const [tracker, setTracker] = useState([]);
   const [lineCounter, setLineCounter] = useState(0);
   const inputRef = useRef(null);
+  const charRef = useRef({});
   const setInputTextHelper = (event) => {
     return setInputTextHelperFactory(
       event,
@@ -30,7 +31,8 @@ const Body = () => {
       isTimerRunning,
       sentences,
       lineCounter,
-      setLineCounter
+      setLineCounter,
+      charRef
     );
   };
   useEffect(() => {
@@ -44,7 +46,6 @@ const Body = () => {
       setTimeRemaining
     );
   }, [isTimerRunning, timeRemaining]);
-
   const arrayOfWords = useRandomWords(NUM_WORDS_TO_FETCH);
   const sentences = arrayOfWords.join(" ");
   const arrayOfChars = sentences.split("");
@@ -66,7 +67,11 @@ const Body = () => {
       {arrayOfChars ? (
         <div className="main-test">
           <Timer timeRemaining={timeRemaining} />
-          <Words inputRef={inputRef} arrayOfChars={arrayOfChars} />
+          <Words
+            inputRef={inputRef}
+            arrayOfChars={arrayOfChars}
+            charRef={charRef}
+          />
           <InputHandler
             inputText={inputText}
             setInputTextHelper={setInputTextHelper}
