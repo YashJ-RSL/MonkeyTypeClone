@@ -1,4 +1,4 @@
-const InputHandler = ({ inputText, setInputTextHelper, inputRef }) => {
+const InputHandler = ({ setInputTextHelper, inputRef }) => {
   return (
     <div className="input">
       <input

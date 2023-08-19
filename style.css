@@ -5,50 +5,54 @@
   margin: 0;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 .body {
   background-color: #323437;
   color: #b3b3aa;
   display: grid;
   justify-items: center;
-  overflow: hidden;
+  font-size: 1.6rem;
 }
 
 .container {
   align-items: center;
-  gap: 5rem;
+  gap: 8rem;
   width: 100%;
-  max-width: 1250px;
-  padding: 69.5938px 2rem 2rem;
+  max-width: 125rem;
+  padding: 6.95rem 3.2rem 3.2rem;
   transition: padding-top 0.125s ease 0s;
   display: grid;
 }
 
 .timer {
   color: #E2B714;
-  font-size: 2rem;
+  font-size: 3.2rem;
   opacity: 0;
 }
 
 .header-h1 {
   font-family: Lexend Deca;
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: unset;
   margin-block-end: unset;
   margin-block-start: unset;
-  margin-top: -0.2em;
+  margin-top: -0.32rem;
   position: relative;
   transition: color 0.25s;
 }
 
 .nav {
   min-width: 100vw;
-  height: 2rem;
+  height: 3.2rem;
   background-color: #E2B714;
 }
 
 .words {
-  font-size: 2rem;
-  height: 170px;
+  font-size: 3.2rem;
+  height: 17rem;
   overflow: hidden;
   width: 100%;
   margin-left: unset;
@@ -57,7 +61,7 @@
 }
 
 .letter {
-  border-bottom: 2px solid transparent;
+  border-bottom: 0.2rem solid transparent;
   color: #646669;
   font-size: 1em;
   font-variant: no-common-ligatures;
@@ -65,7 +69,7 @@
 }
 
 .space {
-  margin: 0.3rem;
+  margin: 0.48rem;
 }
 
 .reload {
@@ -74,17 +78,28 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  margin-top: 5rem;
+  margin-top: 0.8rem;
 }
 
 .input-text {
   opacity: 0;
 }
 
+.main-test {
+  position: relative;
+}
+
+.input {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .results {
   align-items: center;
   display: grid;
-  gap: 5rem;
+  gap: 0.8rem;
   grid-template-areas: "stats chart";
   grid-template-columns: auto 1fr;
   justify-content: space-evenly;
@@ -92,7 +107,7 @@
 .results .stats {
   align-items: center;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.8rem;
   grid-area: stats;
   grid-template-areas: "wpm" "acc";
   justify-content: center;
@@ -102,13 +117,13 @@
 }
 .results .stats .wpm .top {
   display: flex;
-  font-size: 2rem;
-  line-height: 1.5rem;
+  font-size: 3.2rem;
+  line-height: 2.4rem;
   color: #646669;
 }
 .results .stats .wpm .bottom {
-  font-size: 4rem;
-  line-height: 4rem;
+  font-size: 6.4rem;
+  line-height: 6.4rem;
   color: #E2B714;
 }
 .results .stats .acc {
@@ -116,17 +131,17 @@
 }
 .results .stats .acc .top {
   display: flex;
-  font-size: 2rem;
-  line-height: 1.5rem;
+  font-size: 3.2rem;
+  line-height: 2.4rem;
   color: #646669;
 }
 .results .stats .acc .bottom {
-  font-size: 4rem;
-  line-height: 4rem;
+  font-size: 6.4rem;
+  line-height: 6.4rem;
   color: #E2B714;
 }
 .results .chart {
   grid-area: chart;
   width: 100%;
-  max-height: 400px;
+  max-height: 40rem;
 }/*# sourceMappingURL=style.css.map */

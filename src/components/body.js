@@ -78,7 +78,6 @@ const Body = () => {
             charRef={charRef}
           />
           <InputHandler
-            inputText={inputText}
             setInputTextHelper={setInputTextHelper}
             inputRef={inputRef}
           />

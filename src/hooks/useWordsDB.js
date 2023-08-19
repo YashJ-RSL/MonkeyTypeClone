@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import useObjCharsCreator from "./useObjCharsCreator";
 
 const useRandomWords = (n, setSentences, setArrObjChars) => {
