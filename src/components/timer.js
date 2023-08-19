@@ -1,6 +1,6 @@
-const Timer = ({ timeRemaining }) => {
+const Timer = ({ timeRemaining, timerRef }) => {
   return (
-    <div className="timer" id="timer">
+    <div className="timer" id="timer" ref={timerRef}>
       <span className="time">{timeRemaining}</span>
     </div>
   );

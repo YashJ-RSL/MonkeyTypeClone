@@ -13,12 +13,26 @@ const setInputTextHelperFactory = (
   sentences,
   lineCounter,
   setLineCounter,
-  charRef
+  charRef,
+  arrObjChars,
+  setArrObjChars,
+  timerRef
 ) => {
   if (event.key.length === 1 || event.key === "Backspace") {
     if (event.key === "Backspace") {
       if (inputText !== "") {
-        backSpaceHandler(inputText, setInputText, counter, setCounter, charRef);
+        backSpaceHandler(
+          inputText,
+          setInputText,
+          counter,
+          setCounter,
+          charRef,
+          lineCounter,
+          setLineCounter,
+          arrObjChars,
+          setArrObjChars,
+          timerRef
+        );
       }
     } else {
       if (inputText === "" && !isTimerRunning) {
@@ -34,26 +48,29 @@ const setInputTextHelperFactory = (
           sentences,
           lineCounter,
           setLineCounter,
-          charRef
+          charRef,
+          arrObjChars,
+          setArrObjChars
         );
       } else {
         let temp = inputText + event.key;
         setInputText(temp);
         setCounter(counter + 1);
         if (char === event.key) {
-          charRef.current[counter].style.color = "white";
+          arrObjChars[counter].status = "correct";
         } else {
-          charRef.current[counter].style.color = "red";
+          arrObjChars[counter].status = "incorrect";
         }
-        if (counter > 0) {
-          charRef.current[counter - 1].style.borderRight = "None";
+        if (counter >= 0) {
+          arrObjChars[counter].cursor = "none";
         }
-        charRef.current[counter].style.borderRight = "1px solid white";
-        if (event.key === " ") {
+        arrObjChars[counter + 1].cursor = "block";
+        if (char == " ") {
           lineHandler(counter, lineCounter, setLineCounter, charRef);
         }
       }
-      document.getElementById("timer").style.opacity = "1";
+      setArrObjChars(arrObjChars);
+      timerRef.current.style.opacity = "1";
       document.getElementById("nav").style.display = "none";
     }
   }

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
+import useObjCharsCreator from "./useObjCharsCreator";
 
-const useRandomWords = (n) => {
-  const [words, setWords] = useState([]);
-
+const useRandomWords = (n, setSentences, setArrObjChars) => {
   useEffect(() => {
     makeApiCall(n);
   }, []);
@@ -14,10 +13,11 @@ const useRandomWords = (n) => {
     const data = await response.json();
     const arr = data.words.sort(() => 0.5 - Math.random());
     const randomTexts = arr.slice(0, n);
-    setWords(randomTexts);
+    const sentences = randomTexts.join(" ");
+    const arrOfChars = sentences.split("");
+    setSentences(sentences);
+    useObjCharsCreator(arrOfChars, setArrObjChars);
   }
-
-  return words;
 };
 
 export default useRandomWords;

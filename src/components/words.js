@@ -1,4 +1,7 @@
-const Words = ({ inputRef, arrayOfChars, charRef }) => {
+import useGetFontColor from "../hooks/useGetFontColor";
+import useGetCursor from "../hooks/useGetCursor";
+
+const Words = ({ inputRef, arrObjChars, charRef }) => {
   return (
     <div
       className="words"
@@ -6,14 +9,18 @@ const Words = ({ inputRef, arrayOfChars, charRef }) => {
         inputRef.current.focus();
       }}
     >
-      {arrayOfChars.map((item, index) => (
+      {arrObjChars.map((item, index) => (
         <span
           key={index}
           id={`span-char-${index}`}
-          className={"letter " + (item == " " ? "space" : "")}
+          className={"letter " + (item["char"] == " " ? "space" : "")}
           ref={(element) => (charRef.current[index] = element)}
+          style={{
+            color: useGetFontColor(item),
+            borderLeft: useGetCursor(item),
+          }}
         >
-          {item}
+          {item["char"]}
         </span>
       ))}
     </div>

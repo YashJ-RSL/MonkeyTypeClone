@@ -18,8 +18,12 @@ const Body = () => {
   const [counter, setCounter] = useState(0);
   const [tracker, setTracker] = useState([]);
   const [lineCounter, setLineCounter] = useState(0);
+  const [arrObjChars, setArrObjChars] = useState([]);
+  const [sentences, setSentences] = useState("");
   const inputRef = useRef(null);
   const charRef = useRef({});
+  const timerRef = useRef(null);
+
   const setInputTextHelper = (event) => {
     return setInputTextHelperFactory(
       event,
@@ -32,7 +36,10 @@ const Body = () => {
       sentences,
       lineCounter,
       setLineCounter,
-      charRef
+      charRef,
+      arrObjChars,
+      setArrObjChars,
+      timerRef
     );
   };
   useEffect(() => {
@@ -46,9 +53,8 @@ const Body = () => {
       setTimeRemaining
     );
   }, [isTimerRunning, timeRemaining]);
-  const arrayOfWords = useRandomWords(NUM_WORDS_TO_FETCH);
-  const sentences = arrayOfWords.join(" ");
-  const arrayOfChars = sentences.split("");
+
+  useRandomWords(NUM_WORDS_TO_FETCH, setSentences, setArrObjChars);
 
   if (redirectToResults) {
     document.getElementById("nav").style.display = "";
@@ -61,15 +67,14 @@ const Body = () => {
       />
     );
   }
-
   return (
     <>
-      {arrayOfChars ? (
+      {arrObjChars.length != 0 ? (
         <div className="main-test">
-          <Timer timeRemaining={timeRemaining} />
+          <Timer timeRemaining={timeRemaining} timerRef={timerRef} />
           <Words
             inputRef={inputRef}
-            arrayOfChars={arrayOfChars}
+            arrObjChars={arrObjChars}
             charRef={charRef}
           />
           <InputHandler

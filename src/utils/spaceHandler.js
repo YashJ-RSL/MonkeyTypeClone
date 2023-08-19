@@ -8,12 +8,14 @@ const spaceHandler = (
   sentences,
   lineCounter,
   setLineCounter,
-  charRef
+  charRef,
+  arrObjChars,
+  setArrObjChars
 ) => {
   let counterTemp = counter;
   let inputTextTemp = inputText;
   if (counter > 0) {
-    charRef.current[counter - 1].style.borderRight = "None";
+    arrObjChars[counter].cursor = "none";
   }
   while (sentences[counterTemp] !== " ") {
     counterTemp++;
@@ -22,8 +24,9 @@ const spaceHandler = (
   inputTextTemp += " ";
   setInputText(inputTextTemp);
   setCounter(counterTemp + 1);
-  charRef.current[counterTemp].style.borderRight = "1px solid white";
+  arrObjChars[counterTemp + 1].cursor = "block";
   lineHandler(counterTemp, lineCounter, setLineCounter, charRef);
+  setArrObjChars(arrObjChars);
 };
 
 export default spaceHandler;
